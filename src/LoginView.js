@@ -10,7 +10,7 @@ export default class LoginView extends Component {
     }
 
     getLogin = () => {
-        console.log('Router test native');
+        Actions.home();
     }
 
     render() {
