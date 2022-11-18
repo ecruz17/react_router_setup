@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 import { getMusicData } from './api-client';
 import ArtistList from './ArtistList';
@@ -11,12 +11,12 @@ export default class HomeView extends Component {
     }
 
     componentDidMount() {
-        getMusicData().then(data => this.setState({ artists: data }));
+        getMusicData().then(data => this.setState({ artists: data })).catch(err => console.log(err));
     }
 
     render() {
         const artists = this.state.artists
-        console.log(artists)
+        // console.log(`fetch en homeview ${artists}`)
 
         return (
             <View style={styles.container}>
@@ -29,6 +29,10 @@ export default class HomeView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'lightgray'
+        backgroundColor: 'lightgray',
+        justifyContent: 'center'
+    },
+    button: {
+        padding: 20
     }
 });

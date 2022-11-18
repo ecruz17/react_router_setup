@@ -3,10 +3,11 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class ArtistBox extends Component {
     render() {
-        const { image, name } = this.props.artist
+        const { name } = this.props.artist
+        const image = 'https://static.wikia.nocookie.net/shrek/images/5/56/Humpty_Dumpty.png/revision/latest/top-crop/width/360/height/450?cb=20111130083330';
         return (
             <View style={styles.artistBox}>
-                <Image style={styles.image} />
+                <Image style={styles.image} source={{ uri: image }} />
                 <View style={styles.info}>
                     <Text style={styles.name}>
                         {name}
