@@ -1,26 +1,16 @@
-import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import React, { Component } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import ListView from 'deprecated-react-native-listview';
-import ArtistBox from "./ArtistBox";
-import { Actions } from 'react-native-router-flux';
+
+import ArtistBox from './ArtistBox';
 
 export default class ArtistList extends Component {
-
     constructor(props) {
         super(props)
         const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+
         this.state = {
             dataSource: ds
-        }
-    }
-
-    componentDidUpdate() {
-        this.updateDataSource(this.props.artists)
-    }
-
-    componentWillReceiveProps(newProps) {
-        if (newProps.artists !== this.props.artists) {
-            this.updateDataSource(newProps.artists)
         }
     }
 
@@ -30,9 +20,18 @@ export default class ArtistList extends Component {
         })
     }
 
-    handlePress(artist) {
-        // Actions.artistDetail({ artist: artist })
-        console.warn('tamo activo pa')
+    componentDidMount() {
+        this.updateDataSource(this.props.artists)
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.artists !== this.props.artists) {
+            this.updateDataSource(newProps.artists)
+        }
+    }
+
+    handlePress() {
+        console.log('simon me picaste');
     }
 
     render() {
@@ -42,7 +41,7 @@ export default class ArtistList extends Component {
                 dataSource={this.state.dataSource}
                 renderRow={(artist) => {
                     return (
-                        <TouchableOpacity onPress={() => this.handlePress(artist)}>
+                        <TouchableOpacity onPress={() => this.handlePress()}>
                             <ArtistBox artist={artist} />
                         </TouchableOpacity>
                     )
@@ -51,4 +50,3 @@ export default class ArtistList extends Component {
         );
     }
 }
-

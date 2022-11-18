@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class ArtistBox extends Component {
     render() {
-        const { image, name } = this.props.artist;
+        const { image, name } = this.props.artist
         return (
             <View style={styles.artistBox}>
-                <Image style={styles.image} source={{ uri: 'https://picsum.photos/200/300' }} />
+                <Image style={styles.image} />
                 <View style={styles.info}>
-                    <Text style={styles.name} >
+                    <Text style={styles.name}>
                         {name}
                     </Text>
                 </View>
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     artistBox: {
         margin: 5,
         backgroundColor: 'white',
-        flexDirection: true,
+        flexDirection: 'row',
         shadowColor: 'black',
         shadowOpacity: 0.1,
         shadowOffset: {
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: '#333'
     }
-});
+})

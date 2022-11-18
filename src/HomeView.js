@@ -1,56 +1,26 @@
-import { View, StyleSheet, ActivityIndicator, Text } from "react-native";
-import React, { Component } from "react";
-import ArtistList from "./ArtistList";
-import { getMusicData, URL } from "./api-client";
-import { axiosInstance } from "./axios-client";
-import ArtistBox from "./ArtistBox";
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { getMusicData } from './api-client';
+import ArtistList from './ArtistList';
 
 export default class HomeView extends Component {
     state = {
         artists: null,
-        isLoading: true,
-    };
-
-    showLoading = () => {
-        <ActivityIndicator size={"large"} />;
-    };
-
-    getArtists = () => {
-        axiosInstance()
-            .then((response) => {
-                this.setState({ artists: response.data['artists'] });
-                this.setState({ isLoading: false });
-            })
-            .catch((err) => console.log(err));
-    };
+        isLoading: true
+    }
 
     componentDidMount() {
-        this.getArtists();
-        // getMusicData().then((data) => this.setState({ artists: data }))
+        getMusicData().then(data => this.setState({ artists: data }));
     }
 
     render() {
-        const artists = this.state.artists;
-        console.log('estado');
-        console.log(this.state.artists);
-        console.log('loading');
-        console.log(this.state.isLoading);
+        const artists = this.state.artists
+        console.log(artists)
+
         return (
             <View style={styles.container}>
-                {/* {this.state.isLoading ? <ActivityIndicator size={"large"} /> :
-                    // <ArtistList
-                    //     artists={artists}
-                    // />
-                    
-                    // <Text> Lista de artistas </Text>
-                } */}
-                {artists.map((artist) => {
-                    console.log(artist);
-                    // const {name} = artist;
-                    // <ArtistBox
-                    //     name={name}
-                    // />
-                })}
+                {artists && <ArtistList artists={artists} />}
             </View>
         );
     }
@@ -59,8 +29,6 @@ export default class HomeView extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "lightgray",
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+        backgroundColor: 'lightgray'
+    }
 });
