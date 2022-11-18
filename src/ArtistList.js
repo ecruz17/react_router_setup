@@ -14,24 +14,25 @@ export default class ArtistList extends Component {
         }
     }
 
+    componentDidUpdate() {
+        this.updateDataSource(this.props.artists)
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.artists !== this.props.artists) {
+            this.updateDataSource(newProps.artists)
+        }
+    }
+
     updateDataSource = (data) => {
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(data)
         })
     }
 
-    componentDidMount() {
-        this.updateDataSource(this.props.artists)
-    }
-
-    componentWillReceiveProps(newProps) {
-        if (newProps.artists !== this.props.artists) {
-            this.updateDataSource(newProps.artsits)
-        }
-    }
-
     handlePress(artist) {
-        Actions.artistDetail({ artist: artist })
+        // Actions.artistDetail({ artist: artist })
+        console.warn('tamo activo pa')
     }
 
     render() {

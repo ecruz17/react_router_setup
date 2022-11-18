@@ -6,7 +6,7 @@ export default class ArtistBox extends Component {
         const { image, name } = this.props.artist;
         return (
             <View style={styles.artistBox}>
-                <Image style={styles.image} source={{ uri: image }} />
+                <Image style={styles.image} source={{ uri: 'https://picsum.photos/200/300' }} />
                 <View style={styles.info}>
                     <Text style={styles.name} >
                         {name}
@@ -20,7 +20,7 @@ export default class ArtistBox extends Component {
 const styles = StyleSheet.create({
     artistBox: {
         margin: 5,
-        backgroundColor: white,
+        backgroundColor: 'white',
         flexDirection: true,
         shadowColor: 'black',
         shadowOpacity: 0.1,

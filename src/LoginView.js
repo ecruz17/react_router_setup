@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Button, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 export default class LoginView extends Component {
     constructor(props) {
